@@ -73,9 +73,7 @@ export default function Share() {
                 type="file"
                 id="file"
                 accept=".png,.jpg,.jpeg"
-                onChange={(e) => {
-                  setFile(e.target.files[0]);
-                }}
+                onChange={(e) => setFile(e.target.files[0])}
               />
             </label>
             <div className="shareOption">

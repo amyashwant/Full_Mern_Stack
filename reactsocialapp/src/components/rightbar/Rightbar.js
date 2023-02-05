@@ -10,13 +10,20 @@ import { Add, Remove } from "@mui/icons-material";
 function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
-  console.log(user);
   const { user: currentUser, dispatch } = useContext(AuthContext);
 
-  const [followed, setFollowed] = useState(
-    currentUser.followings.includes(user?.id)
-  );
+  console.log(user?._id);
+  console.log(currentUser?.followings);
+  console.log(currentUser.followings.includes(user?._id));
+  const toggles = currentUser.followings.includes(user?._id);
+  console.log(toggles);
 
+  const [followed, setFollowed] = useState(false);
+
+  console.log(currentUser.followings.includes(user?._id));
+  console.log(followed);
+  
+  // toggle = undefined;
   // useEffect(() => {
   //   setFollowed(currentUser.followings.includes(user?.id));
   // }, [currentUser, user.id]);
@@ -42,7 +49,7 @@ function Rightbar({ user }) {
         await axios.put(`/user/${user?._id}/unfollow`, {
           userId: currentUser._id,
         });
-        dispatch({ type: "UNFOLLOW", payload: user._id });
+        dispatch({ type: "UNFOLLOW", payload: user?._id });
       } else {
         await axios.put(`/user/${user?._id}/follow`, {
           userId: currentUser._id,
@@ -136,7 +143,6 @@ function Rightbar({ user }) {
     <>
       <div className="rightbar">
         <div className="rightbarWrapper">
-          
           {user ? <ProfileRightbar /> : <HomeRightbar />}
         </div>
       </div>

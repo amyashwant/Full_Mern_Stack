@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import "./post.css";
 import { MoreVert } from "@mui/icons-material";
 import axios from "axios";
-// import { Users } from "../../dummyData";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -21,12 +20,11 @@ function Post({ post }) {
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/user?userId=${post.userId}`);
-      // console.log(res);
       setUser(res.data);
     };
     fetchUser();
   }, [post.userId]);
-  // console.log(currentUser._id )
+
 
   const likeHandler = async () => {
     const res = await axios.put(`/post/${post._id}/like`, {
@@ -81,7 +79,7 @@ function Post({ post }) {
             <span className="postLikeCounter">{like} people like it</span>
           </div>
           <div className="postBottomRight">
-            <span className="postCommentText">{post.comment}</span>
+            <span className="postCommentText">{post.comment} comments</span>
           </div>
         </div>
       </div>

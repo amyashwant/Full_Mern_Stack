@@ -13,9 +13,6 @@ import {
 import CloseFriend from "../closeFriend/CloseFriend";
 import { Users } from "../../dummyData";
 
-// import { Users } from "../../dummyData";
-// import CloseFriend from "../closeFriend/CloseFriend";
-
 export default function Sidebar() {
   return (
     <div className="sidebar">

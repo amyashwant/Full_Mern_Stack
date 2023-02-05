@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import Post from "../post/Post";
 import Share from "../share/Share";
 import "./feed.css";
-// import { Posts } from "../../dummyData";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -10,6 +9,7 @@ function Feed({ username }) {
   const [posts, setPosts] = useState([]);
   const { user } = useContext(AuthContext);
   console.log(user._id);
+
   useEffect(() => {
     const fetchPosts = async () => {
       const res = username
@@ -27,10 +27,12 @@ function Feed({ username }) {
 
   return (
     <div className="feed">
-      {(!username || username === user.username) && <Share />}
-      {posts.map((p) => (
-        <Post key={p._id} post={p} />
-      ))}
+      <div className="feedWrapper">
+        {(!username || username === user.username) && <Share />}
+        {posts.map((p) => (
+          <Post key={p._id} post={p} />
+        ))}
+      </div>
     </div>
   );
 }

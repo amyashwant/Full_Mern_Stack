@@ -4,10 +4,12 @@ import { AuthContext } from "../../context/AuthContext";
 import { loginCall } from "../../apiCalls";
 import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
+
 export default function Login() {
   const { user, isFetching, error, dispatch } = useContext(AuthContext);
   const email = useRef();
   const password = useRef();
+  
   const handleClick = (e) => {
     e.preventDefault();
     loginCall(
