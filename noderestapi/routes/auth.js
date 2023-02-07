@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const cors=require("cors")
 //register
 router.post("/register", async (req, res) => {
   try {
@@ -19,6 +20,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.use(cors())
 //login
 router.post("/login", async (req, res) => {
   // console.log("hfudhgbubgfbgfjbbffguguvbfubg fvgv");

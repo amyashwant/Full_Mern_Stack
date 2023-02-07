@@ -12,6 +12,7 @@ const messageRoute= require("./routes/messages")
 const multer = require("multer");
 const path = require("path");
 dotenv.config();
+// const cors=require("cors")
 
 mongoose.connect(
   process.env.MONGO_URL,
@@ -27,7 +28,7 @@ mongoose.connect(
 
 //all Middlewares 
 app.use("/images",express.static(path.join(__dirname,"public/images")))
-
+// app.use(cors())
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
